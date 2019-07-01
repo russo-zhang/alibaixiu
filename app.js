@@ -4,6 +4,7 @@
 // 引入第三方模块
 const express = require('express')
 
+
 // 引入用户模块
 const router = require('./router')
 
@@ -14,6 +15,10 @@ const app = express()
 app.listen("3000", () => {
   console.log("server is running at http://127.0.0.1:3000")
 })
+
+// 设置模板
+app.set("view engine", "ejs")
+app.set("views", "views")
 
 // 引入静态资源托管
 // app.use("/assets/css", express.static("css"))
