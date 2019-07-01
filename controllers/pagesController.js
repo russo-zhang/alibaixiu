@@ -48,6 +48,9 @@ module.exports = {
   getAdminSettings: (req, res) => {
     res.render("../views/admin/settings.ejs")
   },
+  getAdminSlides: (req, res) => {
+    res.render("../views/admin/slides.ejs")
+  },
   ico: (req, res) => {
     res.send("404")
   }
