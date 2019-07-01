@@ -1,10 +1,11 @@
 // 引入官方模块
-const fs = require('fs')
-const path = require('path')
+
 
 // 引入第三方模块
 const express = require('express')
 
+// 引入用户模块
+const router = require('./router')
 
 // 创建服务器
 const app = express()
@@ -19,9 +20,9 @@ app.listen("3000", () => {
 app.use("/assets", express.static("assets"))
 app.use("/uploads", express.static("uploads"))
 
-app.use("/", (req, res) => {
-  fs.readFile(path.join(__dirname, "./views/index.html"), (err, data) => {
-    if (err) return res.end(err.message)
-    res.end(data)
-  })
+// 添加路由配置
+app.use((req, res) => {
+
+  router(req, res)
+
 })
