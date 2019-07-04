@@ -4,6 +4,7 @@ const express = require('express')
 // 引入用户模块
 const controller = require('./controllers/pagesController')
 const postsController = require('./controllers/postsController')
+const cateController = require('./controllers/cateController')
 
 // 引入路由模块
 const router = express.Router()
@@ -26,6 +27,7 @@ router.get("/", controller.getIndex)
   .get("/admin/slides", controller.getAdminSlides)
   .get("/favicon.ico", controller.ico)
   .get("/getPosts", postsController.getPosts)
+  .get("/getAllCataList", cateController.getAllCateList)
 
 
 

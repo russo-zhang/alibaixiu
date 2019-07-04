@@ -1,11 +1,9 @@
-const postsModel = require('../models/postsModel')
-
+const cateModel =require('../models/cateModel')
 
 module.exports = {
-  getPosts: (req, res) => {
-    let params = req.query
-
-    postsModel.getPosts(params, (err, result) => {
+  getAllCateList: (req, res) => {
+    // res.send("ok")
+    cateModel.getAllCateList((err, result) => {
       if (err) return res.send({
         code: 1,
         description: "读取数据失败",
@@ -16,11 +14,7 @@ module.exports = {
         description: "读取数据成功",
         data: result
       })
-
     })
   }
-  
-
-
 
 }
