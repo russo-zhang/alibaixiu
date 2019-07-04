@@ -6,7 +6,6 @@ const path = require('path')
 
 module.exports = {
   getIndex: (req, res) => {
-
     res.render("../views/index.ejs")
   },
   getList: (req, res) => {

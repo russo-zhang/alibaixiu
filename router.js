@@ -3,59 +3,29 @@ const express = require('express')
 
 // 引入用户模块
 const controller = require('./controllers/pagesController')
+const postsController = require('./controllers/postsController')
 
 // 引入路由模块
 const router = express.Router()
 
 // 添加路由句柄, 匹配路径
-router.get("/", (req, res) => {
-  controller.getIndex(req, res)
-})
-  .get("/list", (req, res) => {
-    controller.getList(req, res)
-  })
-  .get("/detail", (req, res) => {
-    controller.getDetail(req, res)
-  })
-  .get("/admin", (req, res) => {
-    controller.getAdmin(req, res)
-  })
-  .get("/admin/login", (req, res) => {
-    controller.getAdminLogin(req, res)
-  })
-  .get("/admin/users", (req, res) => {
-    controller.getAdminUsers(req, res)
-  })
-  .get("/admin/categories", (req, res) => {
-    controller.getAdminCategories(req, res)
-  })
-  .get("/admin/comments", (req, res) => {
-    controller.getAdminComments(req, res)
-  })
-  .get("/admin/nav-menus", (req, res) => {
-    controller.getAdminNavMenus(req, res)
-  })
-  .get("/admin/password-reset", (req, res) => {
-    controller.getAdminPasswordReset(req, res)
-  })
-  .get("/admin/post-add", (req, res) => {
-    controller.getAdminPostAdd(req, res)
-  })
-  .get("/admin/posts", (req, res) => {
-    controller.getAdminPosts(req, res)
-  })
-  .get("/admin/profile", (req, res) => {
-    controller.getAdminProfile(req, res)
-  })
-  .get("/admin/settings", (req, res) => {
-    controller.getAdminSettings(req, res)
-  })
-  .get("/admin/slides", (req, res) => {
-    controller.getAdminSlides(req, res)
-  })
-  .get("/favicon.ico", (req, res) => {
-    controller.ico(req, res)
-  })
+router.get("/", controller.getIndex)
+  .get("/list", controller.getList)
+  .get("/detail", controller.getDetail)
+  .get("/admin", controller.getAdmin)
+  .get("/admin/login", controller.getAdminLogin)
+  .get("/admin/users", controller.getAdminUsers)
+  .get("/admin/categories", controller.getAdminCategories)
+  .get("/admin/comments", controller.getAdminComments)
+  .get("/admin/nav-menus", controller.getAdminNavMenus)
+  .get("/admin/password-reset", controller.getAdminPasswordReset)
+  .get("/admin/post-add", controller.getAdminPostAdd)
+  .get("/admin/posts", controller.getAdminPosts)
+  .get("/admin/profile", controller.getAdminProfile)
+  .get("/admin/settings", controller.getAdminSettings)
+  .get("/admin/slides", controller.getAdminSlides)
+  .get("/favicon.ico", controller.ico)
+  .get("/getPosts", postsController.getPosts)
 
 
 
