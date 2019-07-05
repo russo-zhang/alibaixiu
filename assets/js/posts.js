@@ -1,18 +1,35 @@
 $(function () {
-  var pagesize = 4
-  var pagenum = 1
+  var pagesize = 4  //单页显示数量
+  var pagenum = 1   //当前页码
+
+
+
+  // 点击筛选分类文章
+  $(".selectBtn").on("click", function (event) {
+    event.preventDefault()
+    var query = {}
+    if ($(".cateList").val() != "all") {
+      query.cateListVal = $(".cateList").val()
+    }
+    if ($(".statusList").val() != "all") {
+      query.statusListVal = $(".statusList").val()
+    }
+
+    render(query)
+  })
+
   // 动态渲染文章内容
-  function render() {
+  function render(query) {
     $.ajax({
       type: "get",
       url: "/getPosts",
       data: {
         pagesize: pagesize,
-        pagenum: pagenum
+        pagenum: pagenum,
+        ...query
       },
       dataType: "json",
       success: function (res) {
-
         if (res.code == 0) {
           var htmlStr = template("postListTmp", res.data)
           $("tbody").html(htmlStr)
@@ -53,13 +70,33 @@ $(function () {
     url: "/getAllCataList",
     dataType: "json",
     success: function (res) {
-      console.log(res.data)
       if (res.code == 0) {
         var htmlStr = template("cateListTmp", res)
         $(".cateList").html(htmlStr)
       }
     }
   })
+
+  // 删除文章
+  $("tbody").on("click", ".delbtn", function (event) {
+    var id = $(this).data("id")
+    console.log(id)
+    event.preventDefault()
+    $.ajax({
+      type: "get",
+      url: "/delPost",
+      data: {
+        id
+      },
+      success: function (res) {
+        if (res.code == 0) {
+          render()
+        }
+      }
+    })
+  })
+
+
 
 
 

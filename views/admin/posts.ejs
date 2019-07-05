@@ -20,11 +20,11 @@
 
         </select>
         <select name="" class="form-control input-sm statusList">
-          <option value="">所有状态</option>
-          <option value="">草稿</option>
-          <option value="">已发布</option>
+          <option value="all">所有状态</option>
+          <option value="drafted">草稿</option>
+          <option value="published">已发布</option>
         </select>
-        <button class="btn btn-default btn-sm">筛选</button>
+        <button class="btn btn-default btn-sm selectBtn">筛选</button>
       </form>
       <ul class="pagination pagination-sm pull-right" style="float:right">
 
@@ -72,13 +72,13 @@
       </td>
       <td class="text-center">
         <a href="javascript:;" class="btn btn-default btn-xs">编辑</a>
-        <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+        <a href="javascript:;" class="btn btn-danger btn-xs delbtn" data-id="{{$value.id}}">删除</a>
       </td>
     </tr>
 {{/each}}
 </script>
 <script type="text/template" id="cateListTmp">
-  <option value="">所有分类</option>
+  <option value="all">所有分类</option>
   {{each data}}
   <option value="{{$value.id}}">{{$value.name}}</option>
   {{/each}}

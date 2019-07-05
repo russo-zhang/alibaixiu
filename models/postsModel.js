@@ -12,12 +12,22 @@ module.exports = {
   getPosts: (params, callback) => {
     let pagesize = params.pagesize
     let pagenum = params.pagenum
+    let cateListVal = params.cateListVal
+    let statusListVal = params.statusListVal
     let sql = `select
-    posts.title,posts.created,posts.status,users.nickname,categories.name
+    posts.title,posts.created,posts.status,users.nickname,categories.name,posts.id
     from posts
     inner join users on posts.user_id=users.id
-    inner join categories on posts.category_id =categories.id
-    limit ${(pagenum - 1) * pagesize},${pagesize}
+    inner join categories on posts.category_id =categories.id 
+    where 1=1
+    `
+    if (cateListVal) {
+      sql += ` and categories.id=${cateListVal} `
+    }
+    if (statusListVal) {
+      sql += ` and posts.status="${statusListVal}" `
+    }
+    sql += ` limit ${(pagenum - 1) * pagesize},${pagesize}
     `
     conn.query(sql, (err, data) => {
       if (err) return callback(err)
@@ -27,8 +37,18 @@ module.exports = {
         return callback(null, { data, count })
       })
     })
-  }
+  },
+  delPost: (id, callback) => {
+    let sql = "delete from posts where id = "
+    sql += id
+    conn.query(sql, (err, result) => {
+      if (err) return callback(err)
 
+      callback(null, result)
+
+    })
+
+  }
 
 
 

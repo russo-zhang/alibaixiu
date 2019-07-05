@@ -4,7 +4,7 @@ tools = {
     if (index < 0) {
       var pathName = href.slice(href.lastIndexOf("/") + 1)
     } else {
-      var pathName = href.slice(href("/") + 1, href("?"))
+      var pathName = href.slice(href.lastIndexOf("/") + 1, href.indexOf("?"))
     }
     return pathName
   }

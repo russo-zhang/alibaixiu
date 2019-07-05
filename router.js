@@ -28,6 +28,7 @@ router.get("/", controller.getIndex)
   .get("/favicon.ico", controller.ico)
   .get("/getPosts", postsController.getPosts)
   .get("/getAllCataList", cateController.getAllCateList)
+  .get("/delPost", postsController.delPost)
 
 
 
