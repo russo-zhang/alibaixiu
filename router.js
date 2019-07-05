@@ -5,6 +5,7 @@ const express = require('express')
 const controller = require('./controllers/pagesController')
 const postsController = require('./controllers/postsController')
 const cateController = require('./controllers/cateController')
+const loginController = require('./controllers/loginController')
 
 // 引入路由模块
 const router = express.Router()
@@ -29,6 +30,7 @@ router.get("/", controller.getIndex)
   .get("/getPosts", postsController.getPosts)
   .get("/getAllCataList", cateController.getAllCateList)
   .get("/delPost", postsController.delPost)
+  .post("/userLogin", loginController.userLogin)
 
 
 

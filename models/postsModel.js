@@ -27,6 +27,7 @@ module.exports = {
     if (statusListVal) {
       sql += ` and posts.status="${statusListVal}" `
     }
+    sql += ` order by posts.id desc `
     sql += ` limit ${(pagenum - 1) * pagesize},${pagesize}
     `
     conn.query(sql, (err, data) => {

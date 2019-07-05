@@ -79,21 +79,22 @@ $(function () {
 
   // 删除文章
   $("tbody").on("click", ".delbtn", function (event) {
-    var id = $(this).data("id")
-    console.log(id)
-    event.preventDefault()
-    $.ajax({
-      type: "get",
-      url: "/delPost",
-      data: {
-        id
-      },
-      success: function (res) {
-        if (res.code == 0) {
-          render()
+    if (confirm("确定要删除吗?")) {
+      var id = $(this).data("id")
+      event.preventDefault()
+      $.ajax({
+        type: "get",
+        url: "/delPost",
+        data: {
+          id
+        },
+        success: function (res) {
+          if (res.code == 0) {
+            render()
+          }
         }
-      }
-    })
+      })
+    }
   })
 
 
