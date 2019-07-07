@@ -44,6 +44,13 @@ module.exports = {
     sql += id
     conn.query(sql, (err, result) => {
       if (err) return callback(err)
+      callback(null, result)
+    })
+  },
+  publishPost: (params, callback) => {
+    let sql = "insert into posts set ?"
+    conn.query(sql, params, (err, result) => {
+      if (err) return callback(err)
 
       callback(null, result)
 

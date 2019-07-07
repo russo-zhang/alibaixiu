@@ -64,7 +64,7 @@ $(function () {
     })
   }
 
-  // 分类动态渲染
+  // 文章分类动态渲染
   $.ajax({
     type: "get",
     url: "/getAllCataList",

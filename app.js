@@ -27,6 +27,7 @@ app.set("views", "views")
 // app.use("/assets/css", express.static("css"))
 app.use("/assets", express.static("assets"))
 app.use("/uploads", express.static("uploads"))
+app.use("/usersUploads", express.static("usersUploads"))
 
 // 添加路由配置
 app.use((req, res) => {
