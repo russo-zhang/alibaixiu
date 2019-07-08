@@ -58,9 +58,12 @@ app.use(session({
   saveUninitialized: false,
 }))
 
+// 使用路由中间件,每一个请求都会经过这里
 app.use((req, res, next) => {
 
   if (req.session.isLogin && req.session.isLogin == "true" || req.url == "/admin/login" || req.url.indexOf("/admin") == -1) {
+
+    // 使用这个方法,才能调用后面方法,如路由
     next()
   } else {
     res.redirect("/admin/login")

@@ -34,6 +34,8 @@ router.get("/", controller.getIndex)
   .post("/userLogin", loginController.userLogin)
   .post("/uploadFile", uploadController.uploadFile)
   .post("/publishPost", postsController.publishPost)
+  .get("/getPostById", postsController.getPostById)
+  .post("/updatePost", postsController.updatePost)
 
 
 

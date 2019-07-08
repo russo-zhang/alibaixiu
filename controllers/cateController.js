@@ -1,4 +1,4 @@
-const cateModel =require('../models/cateModel')
+const cateModel = require('../models/cateModel')
 
 module.exports = {
   getAllCateList: (req, res) => {
