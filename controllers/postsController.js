@@ -35,8 +35,8 @@ module.exports = {
   },
   publishPost: (req, res) => {
     let params = req.body
-    params.user_id = 1
-    console.log(params)
+    params.user_id = req.session.user.id
+    // console.log(params)
     postsModel.publishPost(params, (err, result) => {
 
       if (err) return res.send({

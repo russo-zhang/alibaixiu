@@ -9,6 +9,7 @@ let conn = mysql.createConnection({
 })
 
 module.exports = {
+  // 获取文章
   getPosts: (params, callback) => {
     let pagesize = params.pagesize
     let pagenum = params.pagenum
@@ -39,6 +40,7 @@ module.exports = {
       })
     })
   },
+  // 删除文章
   delPost: (id, callback) => {
     let sql = "delete from posts where id = "
     sql += id
@@ -47,6 +49,7 @@ module.exports = {
       callback(null, result)
     })
   },
+  // 发布文章
   publishPost: (params, callback) => {
     let sql = "insert into posts set ?"
     conn.query(sql, params, (err, result) => {

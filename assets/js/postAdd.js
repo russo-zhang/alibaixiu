@@ -61,7 +61,10 @@ $(function () {
       data: $(this).serialize(),
       dataType: "json",
       success: function (res) {
-        console.log(res)
+        if (res.code == 0) {
+          alert("发布成功")
+          location.href = "/admin/posts"
+        }
       }
     })
 

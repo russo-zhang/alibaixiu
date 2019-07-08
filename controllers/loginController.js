@@ -1,3 +1,5 @@
+const querystring = require('querystring')
+
 const loginModel = require('../models/loginModel')
 module.exports = {
 
@@ -13,11 +15,19 @@ module.exports = {
       } else {
         if (result) {
           if (result.password == data.password) {
-            res.send({
+            // //------cookie方式-设置响应头------
+            // res.writeHead(200, {
+            //   "Set-cookie": "isLogin=true"
+            // })
+
+            // //------session方式------
+            req.session.isLogin = "true"
+            req.session.user = result
+            res.end(JSON.stringify({
               code: 0,
               description: "登录成功",
               data: result
-            })
+            }))
           } else {
             res.send({
               code: 400,
