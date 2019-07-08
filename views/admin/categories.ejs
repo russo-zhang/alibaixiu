@@ -12,7 +12,8 @@
     <div class="row">
       <div class="col-md-4">
         <form>
-          <h2>添加新分类目录</h2>
+          <input type="hidden" id="hidden_id" name="id">
+          <h2 class="title_h2">添加新分类目录</h2>
           <div class="form-group">
             <label for="name">名称</label>
             <input id="name" class="form-control" name="name" type="text" placeholder="分类名称">
@@ -24,13 +25,14 @@
           </div>
           <div class="form-group">
             <button class="btn btn-primary addBtn" type="submit">添加</button>
+            <button class="btn btn-primary updateBtn" type="submit" style="display:none">更新</button>
           </div>
         </form>
       </div>
       <div class="col-md-8">
         <div class="page-action">
           <!-- show when multiple checked -->
-          <a class="btn btn-danger btn-sm" href="javascript:;" style="display: none">批量删除</a>
+          <a class="btn btn-danger btn-sm multipleDel" href="javascript:;" style="display: none">批量删除</a>
         </div>
         <table class="table table-striped table-bordered table-hover">
           <thead>
@@ -59,12 +61,12 @@
 <script type="text/template" id="categoriesTmp">
   {{each data}}
   <tr>
-      <td class="text-center"><input type="checkbox"></td>
+      <td class="text-center"><input type="checkbox" data-id="{{$value.id}}"></td>
       <td>{{$value.name}}</td>
       <td>{{$value.slug}}</td>
       <td class="text-center">
-        <a href="javascript:;" class="btn btn-info btn-xs" data-id="{{$value.id}}" data-slug="{{$value.slug}} data-name={{$value.name}}">编辑</a>
-        <a href="javascript:;" class="btn btn-danger btn-xs" data-id="{{$value.id}}">删除</a>
+        <a href="javascript:;" class="btn btn-info btn-xs editBtn" data-id="{{$value.id}}" data-slug="{{$value.slug}}" data-name="{{$value.name}}">编辑</a>
+        <a href="javascript:;" class="btn btn-danger btn-xs delBtn" data-id="{{$value.id}}">删除</a>
       </td>
     </tr>
     {{/each}}
