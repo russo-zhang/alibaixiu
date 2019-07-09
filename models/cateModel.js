@@ -44,6 +44,15 @@ module.exports = {
       if (err) return callback(err)
       callback(null, result)
     })
+  },
+  multipleDelCate: (arr_id, callback) => {
+    // console.log(arr_id)
+    let sql = `delete from categories where id in(${arr_id})`
+
+    conn.query(sql, (err, result) => {
+      if (err) return callback(err)
+      callback(null, result)
+    })
   }
 
 

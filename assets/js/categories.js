@@ -115,7 +115,7 @@ $(function () {
   var allPick = $("thead [type=checkbox]")
   var pick = $("tbody [type=checkbox]")
   allPick.on("click", function () {
- // 判断复选框选中数是否大于2,如果大于2,将显示批量删除按钮
+    // 判断复选框选中数是否大于2,如果大于2,将显示批量删除按钮
     if (allPick.prop("checked")) {
       $("tbody [type=checkbox]").prop("checked", true)
     } else {
@@ -128,6 +128,7 @@ $(function () {
       $(".multipleDel").hide()
     }
   })
+
 
   $("tbody").on("click", pick, function () {
 
@@ -145,7 +146,32 @@ $(function () {
     } else {
       allPick.prop("checked", false)
     }
+
   })
+
+  $(".multipleDel").on("click", function () {
+    // if(confirm("真的要批量删除吗?"))
+    var checkboxs = $("tbody [type=checkbox]:checked")
+    var arr_id = []
+    checkboxs.each(function (index, item) {
+      arr_id.push(item.getAttribute("data-id"))
+    })
+    console.log(arr_id)
+    $.ajax({
+      type: "get",
+      url: "/multipleDelCate",
+      data: { arr_id },
+      dataType: "json",
+      success: function (res) {
+        console.log(res)
+        if (res.code == 0) {
+          alert("批量删除成功")
+          render()
+        }
+      }
+    })
+  })
+
 
 
 

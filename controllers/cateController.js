@@ -75,6 +75,22 @@ module.exports = {
         data: result
       })
     })
+  },
+  multipleDelCate: (req, res) => {
+
+    let arr_id = req.query.arr_id
+    cateModel.multipleDelCate(arr_id, (err, result) => {
+      if (err) return res.send({
+        code: 1,
+        description: "删除数据失败",
+        msg: err.message
+      })
+      res.send({
+        code: 0,
+        description: "删除数据成功",
+        data: result
+      })
+    })
   }
 
 }
