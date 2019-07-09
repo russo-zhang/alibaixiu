@@ -7,6 +7,7 @@ const postsController = require('./controllers/postsController')
 const cateController = require('./controllers/cateController')
 const loginController = require('./controllers/loginController')
 const uploadController = require('./controllers/uploadController')
+const settingController = require('./controllers/settingController')
 
 // 引入路由模块
 const router = express.Router()
@@ -37,10 +38,15 @@ router.get("/", controller.getIndex)
   .get("/multipleDelCate", cateController.multipleDelCate)
   .get("/delPost", postsController.delPost)
   .post("/userLogin", loginController.userLogin)
-  .post("/uploadFile", uploadController.uploadFile)
   .post("/publishPost", postsController.publishPost)
   .get("/getPostById", postsController.getPostById)
   .post("/updatePost", postsController.updatePost)
+
+  .get("/getSettingData", settingController.getSettingData)
+  .post("/updateSetting", settingController.updateSetting)
+
+  .post("/uploadFile", uploadController.uploadFile)
+  .post("/uploadLogo", uploadController.uploadLogo)
 
 
 

@@ -83,7 +83,7 @@ $(function () {
         $("#content").html(res.data[0].content)
         $("#slug").val(res.data[0].slug)
         $(".usersImg").attr("src", res.data[0].feature).show()
-        $("#hide_input").val(res.data[0].feature)
+        $(".hide_input").val(res.data[0].feature)
         $("#category").val(res.data[0].category_id)
         $("#created").val(res.data[0].created)
         $("#status").val(res.data[0].status)

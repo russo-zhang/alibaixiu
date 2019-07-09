@@ -101,7 +101,6 @@ $(function () {
         success: function (res) {
           console.log(res)
           if (res.code == 0) {
-            alert("删除成功")
             render()
           }
         }
