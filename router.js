@@ -8,6 +8,7 @@ const cateController = require('./controllers/cateController')
 const loginController = require('./controllers/loginController')
 const uploadController = require('./controllers/uploadController')
 const settingController = require('./controllers/settingController')
+const navMenusController = require('./controllers/navMenusController')
 
 // 引入路由模块
 const router = express.Router()
@@ -48,8 +49,10 @@ router.get("/", controller.getIndex)
   .post("/uploadFile", uploadController.uploadFile)
   .post("/uploadLogo", uploadController.uploadLogo)
 
-
-
+  // 导航菜单
+  .get("/getNavMenus", navMenusController.getNavMenus)
+  .post("/addNavMenus", navMenusController.addNavMenus)
+  .get("/delNavMenus", navMenusController.delNavMenus)
 
 
 
